@@ -6,6 +6,7 @@ import { config } from './config'
 import { UserModule } from './user/user.module'
 import { FlowOptionModule } from './flow-option/flow-option.module'
 import { LogActiveDayModule } from './log-active-day/log-active-day.module'
+import { PrismaService } from './prisma.service'
 
 @Module({
   imports: [
@@ -15,6 +16,6 @@ import { LogActiveDayModule } from './log-active-day/log-active-day.module'
     LogActiveDayModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}

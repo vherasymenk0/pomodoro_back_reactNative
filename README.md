@@ -1,7 +1,3 @@
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
 ## Installation
 
 ```bash
@@ -12,13 +8,31 @@ $ yarn install
 
 ```bash
 # development
-$ yarn run start
+$ yarn dev
 
 # watch mode
-$ yarn run start:dev
+$ yarn watch
+
+# build
+$ yarn build
 
 # production mode
-$ yarn run start:prod
+$ yarn start:prod
+```
+
+## Prisma
+```bash
+# format prisma scheme
+$ yarn prisma:f
+
+# generate prisma scheme
+$ yarn prisma:g
+
+# migration
+$ yarn prisma:m
+
+# studio
+$ yarn prisma:s
 ```
 
 ## Test

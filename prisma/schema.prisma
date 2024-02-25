@@ -14,31 +14,37 @@ datasource db {
 }
 
 model User {
-  id            Int           @id @default(autoincrement())
+  id            Int           @id @default(autoincrement()) @map("_id")
   email         String        @unique
   password      String        @unique
   options       FlowOptions?
   logActiveDays LogActiveDay?
-  createAt      DateTime      @default(now())
-  updateAt      DateTime      @updatedAt
+  createAt      DateTime      @default(now()) @map("create_at")
+  updateAt      DateTime      @updatedAt @map("update_at")
+
+  @@map("user")
 }
 
 model FlowOptions {
   id            Int      @id @default(autoincrement())
   user          User     @relation(fields: [userId], references: [id])
-  userId        Int      @unique
-  flowDuration  Int
-  breakDuration Int
-  sessionCount  Int
-  createAt      DateTime @default(now())
-  updateAt      DateTime @updatedAt
+  userId        Int      @unique @map("user_id")
+  flowDuration  Int      @map("flow_duration")
+  breakDuration Int      @map("break_duration")
+  sessionCount  Int      @map("session_count")
+  createAt      DateTime @default(now()) @map("create_at")
+  updateAt      DateTime @updatedAt @map("update_at")
+
+  @@map("flow_options")
 }
 
 model LogActiveDay {
   id           Int      @id @default(autoincrement())
   user         User     @relation(fields: [userId], references: [id])
-  userId       Int      @unique
-  sessionCount Int
-  createAt     DateTime @default(now())
-  updateAt     DateTime @updatedAt
+  userId       Int      @unique @map("user_id")
+  sessionCount Int      @map("session_count")
+  createAt     DateTime @default(now()) @map("create_at")
+  updateAt     DateTime @updatedAt @map("update_at")
+
+  @@map("log_active_day")
 }
