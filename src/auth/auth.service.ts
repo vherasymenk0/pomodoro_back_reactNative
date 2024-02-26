@@ -21,13 +21,13 @@ export class AuthService {
     const user = await this.validateUser(dto)
 
     return {
-      user: this.returnUserFields(user),
+      user: await this.returnUserFields(user),
       accessToken: await this.issueAccessToken(user.id),
     }
   }
 
   async register(dto: AuthDto) {
-    const existUser = this.prisma.user.findUnique({
+    const existUser = await this.prisma.user.findUnique({
       where: { email: dto.email },
     })
 
@@ -41,8 +41,8 @@ export class AuthService {
     })
 
     return {
-      user: this.returnUserFields(newUser),
-      accessToken: this.issueAccessToken(newUser.id),
+      user: await this.returnUserFields(newUser),
+      accessToken: await this.issueAccessToken(newUser.id),
     }
   }
 
@@ -54,7 +54,7 @@ export class AuthService {
 
     if (!user) throw new NotFoundException('User not found')
 
-    const isValidPassword = await verify(dto.password, user.password)
+    const isValidPassword = await verify(user.password, dto.password)
 
     if (!isValidPassword) throw new UnauthorizedException('Incorrect password')
 
