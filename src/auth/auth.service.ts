@@ -37,6 +37,13 @@ export class AuthService {
       data: {
         email: dto.email,
         password: await hash(dto.password),
+        options: {
+          create: {
+            flowDuration: 52,
+            breakDuration: 30,
+            sessionCount: 7,
+          },
+        },
       },
     })
 
