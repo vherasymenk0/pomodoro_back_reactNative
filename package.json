@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "nest start",
-    "watch": "nest start --watch",
+    "start": "nest start",
+    "dev": "nest start --watch",
     "build": "nest build",
     "start:prod": "node dist/main",
     "debug": "nest start --debug --watch",
@@ -34,6 +34,7 @@
     "argon2": "^0.40.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "dayjs": "^1.11.10",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.0",
